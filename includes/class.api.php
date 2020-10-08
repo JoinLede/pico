@@ -4,7 +4,7 @@
 
 		// Here initialize our namespace and resource name.
 		public function __construct() {
-			$this->namespace     = '/pico/v1';
+			$this->namespace     = 'pico/v1';
 			$this->health_resource_name = 'check';
 		}
 
@@ -12,16 +12,11 @@
 		 * Register routes with callbacks and schema
 		 */
 		public function register_routes() {
-            remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
-            add_filter('rest_pre_serve_request', function($value) {
-                header('Access-Control-Allow-Origin: *');
-                header('Access-Control-Allow-Headers: authorization,content-type,publisherid');
-                return $value;
-            });
 			register_rest_route( $this->namespace, '/' . $this->health_resource_name, array(
                 'methods'   => 'POST',
                 'callback'  => array( $this, 'health_callback' ),
-                'args' => self::validate_health_arguments()
+                'args' => self::validate_health_arguments(),
+                'permission_callback' => '__return_true',
 			));
 		}
 
