@@ -5,11 +5,11 @@
     ?>
     <!--Connect form -->
 	<div class="form pico">
-		<div class="header-form"><img src="<?php echo plugin_dir_url( __DIR__ ) . 'img/wordmark.svg'?>" alt="Pico"></div>
+		<div class="header-form"><img src="<?php echo plugin_dir_url( __DIR__ ) . 'img/logo.svg'?>" alt="Pico"></div>
 		<div class="description-form">
-			<p><span><b>Connect your Pico Publisher account.</b></span><br>Your Publisher ID and API Key can be found under the Integrations tab of your <a href="https://publisher.pico.tools/settings/integrations" target="_blank">Pico settings</a>.</p>
+			<p><b>Connect your Pico account.</b><br>Your Account ID and API Key can be found in your Pico dashboard under <a href="https://publisher.pico.tools/settings/integrations" target="blank">Settings ► Website</a>.</p>
 		</div>
-		<p class="login-label">Publisher ID</p>
+		<p class="login-label">Account ID</p>
 		<div class="input-wrapper">
             <?php $publisher_creds = Pico_Setup::get_publisher_id(true); ?>
 			<input type="text" id="publisher_id" name="publisher_id" value="<?php echo $publisher_creds['publisher_id']?>" disabled>

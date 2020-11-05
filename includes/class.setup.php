@@ -60,7 +60,6 @@ class Pico_Setup {
         $publisher_id_transient = get_transient( 'pico_publisher_id' );
         $api_key_transient = get_transient( 'pico_api_key ');
 
-
         if ($include_key) {
             if ( !empty($publisher_id_transient) && !empty($api_key_transient) ) {
                 $key_included_array = array(
@@ -110,6 +109,15 @@ class Pico_Setup {
     }
 
     /**
+     * Gets the Pico Context
+     * 
+     * @return [string] gadget or widget, default to widget
+     */
+    public static function get_pico_context(){
+        return defined('PICO_CONTEXT') ? PICO_CONTEXT : 'widget';
+    }
+
+    /**
      * Setting the version of the read-more.js to the etag of the widget code
      * in case publishers are using caching plugins
      *
@@ -145,6 +153,39 @@ class Pico_Setup {
             // and each time the transient expires
             return $version;
         }
+    }
+
+    public static function get_gadget_version_info(){
+        // Do we have this information in our transients already?
+        $transient = get_transient( 'pico_gadget_version' );
+        $publisher_id = self::get_publisher_id(false);
+        $gadget_endpoint = self::get_gadget_endpoint();
+
+        if( !empty($transient) ) {
+            // The function will return here every time after the first time it is run, until the transient expires.
+            return $transient;
+        } else {
+            $url = $gadget_endpoint . '/load/build';
+
+            // Get the widget code and grab the etag from the header.
+            $response = wp_remote_get( $url );
+
+            // default version is the current time
+            $version = date('m.d.y.H.i');
+
+            if (is_array($response) && isset($response['headers']['etag'])) {
+                // remove quotes and W/ from etag
+                $version = str_replace('"', '', str_replace('W/', '', $response['headers']['etag']));
+            }
+
+            // Save the version so we don't have to call again for 10 minutes (600 seconds)
+            set_transient( 'pico_gadget_version', $version, 600);
+
+            // The function will return here the first time it is run
+            // and each time the transient expires
+            return $version;
+        }
+
     }
 
     public static function create_table() {
@@ -189,6 +230,7 @@ class Pico_Setup {
 	public static function plugin_deactivation( ) {
         delete_transient('pico_publisher_id');
         delete_transient('pico_widget_version');
+        delete_transient('pico_gadget_version');
         return self::deactivate_key();
     }
 
@@ -229,4 +271,3 @@ class Pico_Setup {
         }
     }
 }
-?>
