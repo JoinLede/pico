@@ -1,9 +1,10 @@
 === Pico ===
-Contributors: picoengineering, iheartcake
-Tags: subscriptions, memberships, donations, payments, paywall, popups, email, newsletters, login, stripe
+Contributors: picoengineering
+Tags: subscriptions, memberships, stripe
 Requires at least: 3.7
-Tested up to: 5.2.1
-Stable tag: 0.8.1
+Tested up to: 5.5.1
+Requires PHP: 5.2.4
+Stable tag: 0.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,8 +78,25 @@ Complete instructions for using Pico, including product tours, troubleshooting, 
 
 == Changelog ==
 
+= 0.9.4 =
+Minor enhancements
+
+= 0.9.3 =
+Fix some broken links!
+
+= 0.9.2 =
+* address plugin getting deactivated on update 
+
+= 0.9.0 =
+* Updated compatibility to Wordpress 5.5.1 
+* Updated copy and screenshots
+* Tested with PHP 7.2.10
+* Added CICD workflow for more frequent updates! 
+
 = 0.8.1 =
 * Fixing image path names and tags
 
 = 0.8 =
 * Initial release
+
+

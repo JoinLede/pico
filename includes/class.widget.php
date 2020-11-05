@@ -2,9 +2,13 @@
 
 class Pico_Widget {
 
+    private static $publisher_id;
+
     public static function init() {
-        if (Pico_Setup::get_publisher_id(false) !== null) {
+        $pub_id = Pico_Setup::get_publisher_id(false);
+        if ($pub_id !== null) {
             add_action('wp', array('Pico_Widget', 'do_widget'), 11);
+            self::$publisher_id = $pub_id;
         }
     }
 
@@ -37,7 +41,7 @@ class Pico_Widget {
             add_filter('the_content', array('Pico_Widget', 'filter_content'));
         } else {
             // If not, just add the <pico> tag at the end so we can load the widget without cutting off content
-            add_action('wp_footer', array('Pico_Widget', 'load_empty_pico_tag'));
+                add_action('wp_footer', array('Pico_Widget', 'load_empty_pico_tag'));
         }
     }
 
@@ -47,6 +51,10 @@ class Pico_Widget {
 
     public static function load_empty_widget_container() {
         echo "<div id='pico-widget-container'></div>";
+    }
+
+    public static function load_gadget_script() {
+        echo '<script data-pico-id="' . self::$publisher_id . '" src="' . Pico_Setup::get_gadget_endpoint() . '/load/build.js"></script>';
     }
 
     public static function filter_content($content) {
@@ -66,6 +74,7 @@ class Pico_Widget {
         $widget_endpoint    = Pico_Setup::get_widget_endpoint();
         $publisher_id       = Pico_Setup::get_publisher_id(false);
         $widget_version     = Pico_Setup::get_widget_version_info();
+        $pico_context       = Pico_Setup::get_pico_context();
         wp_register_script('read-more.js', plugin_dir_url(__FILE__) . 'js/read-more.js', [], $widget_version);
         wp_localize_script('read-more.js', 'pp_vars',
             array_merge(
@@ -74,6 +83,7 @@ class Pico_Widget {
                     'widget_endpoint' => $widget_endpoint,
                     'plugin_version'  => PICO_VERSION,
                     'widget_version'  => str_replace('"', "", $widget_version),
+                    'pico_context'    => $pico_context,
                 ), self::get_current_view_info()
             )
         );

@@ -37,7 +37,13 @@
         script.setAttribute("async", !0);
         script.setAttribute("defer", !0);
         script.setAttribute("crossorigin", "anonymous");
-        script.setAttribute("src", pp_vars.widget_endpoint + "/static/js/bundle.js?client_id=" + pp_vars.publisher_id + "&widget_version=" + pp_vars.widget_version);
+
+        if(pp_vars.pico_context === 'widget') {
+            script.setAttribute("src", pp_vars.widget_endpoint + "/static/js/bundle.js?client_id=" + pp_vars.publisher_id + "&widget_version=" + pp_vars.widget_version);
+        } else {
+            script.setAttribute("data-pico-id", pp_vars.publisher_id);
+            script.setAttribute("src", pp_vars.widget_endpoint + "/load/build.js");
+        }
         element.appendChild(script);
 
 	});

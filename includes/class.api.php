@@ -15,8 +15,8 @@
 			register_rest_route( $this->namespace, '/' . $this->health_resource_name, array(
                 'methods'   => 'POST',
                 'callback'  => array( $this, 'health_callback' ),
-                'args' => self::validate_health_arguments(),
-                'permission_callback' => '__return_true',
+				'args' => self::validate_health_arguments(),
+				'permission_callback' => '__return_true',
 			));
 		}
 

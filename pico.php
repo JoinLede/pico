@@ -1,15 +1,15 @@
 <?php
-/*
-Plugin Name: Pico
-Plugin URI: https://wordpress.org/plugins/pico
-Description: Intelligent popups and landing pages to fully manage email signups, newsletters, subscriptions, donations, and memberships.
-Version: 0.8.1
-Author: Pico
-Author URI: https://www.pico.tools
-Network: false
-*/
+/**
+ * Plugin Name: Pico
+ * Plugin URI:  https://github.com/PicoNetworks/wordpress-plugin
+ * Description: Signup and payment tools for the internet's most passionate communities
+ * Version:     0.9.4
+ * Author:      picoengineering
+ * Author URI:  https://trypico.com
+ * License:     GPL2
+ */
 
-define( 'PICO_VERSION', '0.8.1' );
+define( 'PICO_VERSION', '0.9.4' );
 define( 'PICO__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PICO__MINIMUM_WP_VERSION', '3.7' );
 
