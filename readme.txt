@@ -2,9 +2,9 @@
 Contributors: picoengineering
 Tags: subscriptions, memberships, stripe
 Requires at least: 3.7
-Tested up to: 5.5.1
+Tested up to: 5.6
 Requires PHP: 5.2.4
-Stable tag: 0.9.4
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,10 @@ Complete instructions for using Pico, including product tours, troubleshooting, 
 6. Target registration and monetization popups at just the right moment.
 
 == Changelog ==
+
+= 1.0.0 =
+* Support for new Pico Gadget!
+* Support for WP 5.6
 
 = 0.9.4 =
 Minor enhancements
