@@ -46,7 +46,7 @@ class Pico_Setup {
     * @return [string] widget endpoint
     */
     public static function get_widget_endpoint() {
-        return defined('PP_WIDGET_ENDPOINT') ? PP_WIDGET_ENDPOINT : 'https://widget.pico.tools';
+        return defined('PP_WIDGET_ENDPOINT') ? PP_WIDGET_ENDPOINT : 'https://gadget.pico.tools';
     }
 
     /**
@@ -111,10 +111,10 @@ class Pico_Setup {
     /**
      * Gets the Pico Context
      * 
-     * @return [string] gadget or widget, default to widget
+     * @return [string] gadget or widget, default to gadget
      */
     public static function get_pico_context(){
-        return defined('PICO_CONTEXT') ? PICO_CONTEXT : 'widget';
+        return defined('PICO_CONTEXT') ? PICO_CONTEXT : 'gadget';
     }
 
     /**
