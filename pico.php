@@ -3,13 +3,13 @@
  * Plugin Name: Pico
  * Plugin URI:  https://github.com/PicoNetworks/wordpress-plugin
  * Description: Signup and payment tools for the internet's most passionate communities
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      picoengineering
  * Author URI:  https://trypico.com
  * License:     GPL2
  */
 
-define( 'PICO_VERSION', '1.0.0' );
+define( 'PICO_VERSION', '1.0.1' );
 define( 'PICO__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PICO__MINIMUM_WP_VERSION', '3.7' );
 
